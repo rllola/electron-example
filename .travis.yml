@@ -1,0 +1,29 @@
+dist: trusty
+sudo: required
+language: node_js
+node_js:
+  - "7"
+os:
+  - osx
+  - linux
+addons:
+  apt:
+    packages:
+    - rpm
+before_install:
+  # 2016-10: Apple doesn't include openssl any more because of security
+  # problems openssl had. Manually specify path to includes/libs.
+  - if [ "$TRAVIS_OS_NAME" = osx ]; then brew install openssl; fi
+  - if [ "$TRAVIS_OS_NAME" = osx ]; then export CPPFLAGS="-I/usr/local/opt/openssl/include"; fi
+  - if [ "$TRAVIS_OS_NAME" = osx ]; then export LDFLAGS="-L/usr/local/opt/openssl/lib"; fi
+install:
+  - npm install
+script:
+  - npm test
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: electron-forge publish
+  on:
+    branch:
+      - master

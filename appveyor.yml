@@ -1,0 +1,26 @@
+platform:
+  - x64
+
+skip_tags: true
+
+environment:
+  GITHUB_TOKEN:
+    secure: <encryped-value>
+
+init:
+  - git config --global core.autocrlf input
+
+install:
+  - ps: Install-Product node 7 x64
+  - npm install npm -g
+  - npm install -g electron-forge
+  - npm install
+
+build_script:
+  - electron-forge publish
+
+test: off
+
+branches:
+    only:
+      - master
