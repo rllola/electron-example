@@ -15,7 +15,7 @@ install:
   - npm install
 
 deploy_script:
-  - if ($env:APPVEYOR_REPO_TAG_NAME) { npm run publish }
+  - ps: IF ($env:APPVEYOR_REPO_TAG_NAME) { npm run publish }
 
 test: off
 build: off
