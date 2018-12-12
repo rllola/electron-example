@@ -1,7 +1,7 @@
 const electron = require('electron')
 const APP_VERSION = require('../package.json').version
 
-const AUTO_UPDATE_URL = 'https://update.rocks/update/' + process.platform + '/' + APP_VERSION
+const AUTO_UPDATE_URL = 'https://dev.update.rocks/github.com/rllola/electron-example/update/' + process.platform + '/' + APP_VERSION
 
 function init () {
   if (process.platform === 'linux') {

@@ -21,4 +21,4 @@ test: off
 
 branches:
     only:
-      - master
+      APPVEYOR_REPO_TAG: true
