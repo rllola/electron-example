@@ -19,3 +19,4 @@ deploy_script:
   - npm run publish
 
 test: off
+build: off
