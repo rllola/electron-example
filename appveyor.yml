@@ -14,10 +14,8 @@ install:
   - npm install -g electron-forge
   - npm install
 
-build_script:
-  - electron-forge publish
+deploy_script:
+  - if ($env:APPVEYOR_REPO_TAG -ne "true") { return }
+  - npm run publish
 
 test: off
-
-on:
-  APPVEYOR_REPO_TAG: true
