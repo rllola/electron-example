@@ -19,6 +19,5 @@ build_script:
 
 test: off
 
-branches:
-    only:
-      APPVEYOR_REPO_TAG: true
+on:
+  APPVEYOR_REPO_TAG: true
