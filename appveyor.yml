@@ -1,11 +1,9 @@
 platform:
   - x64
 
-skip_tags: true
-
 environment:
   GITHUB_TOKEN:
-    secure: <encryped-value>
+    secure: FuwJPpfEXaSQDNwGhl2MiyqmZzdfVbXytHGP5AfTtV9tV6bcZXzAQ+kqIbhs25VG
 
 init:
   - git config --global core.autocrlf input
