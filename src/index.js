@@ -22,6 +22,11 @@ const createWindow = () => {
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
 
+  // Check for updates
+  mainWindow.webContents.once('did-frame-finish-load', function (event) {
+    updater.init()
+  })
+
   // Emitted when the window is closed.
   mainWindow.on('closed', () => {
     // Dereference the window object, usually you would store windows
