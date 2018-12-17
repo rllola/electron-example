@@ -1,14 +1,16 @@
 const electron = require('electron')
 const APP_VERSION = require('../package.json').version
 
-const AUTO_UPDATE_URL = 'https://api.dev.update.rocks/github.com/rllola/electron-example/update/' + process.platform + '/' + APP_VERSION
+const AUTO_UPDATE_URL = 'https://api.dev.update.rocks/update/github.com/rllola/electron-example/' + process.platform + '/' + APP_VERSION
 
 function init () {
   if (process.platform === 'linux') {
     console.log('Auto updates not available on linux')
   } else {
+    console.log(AUTO_UPDATE_URL)
     initDarwinWin32()
   }
+  initDarwinWin32()
 }
 
 function initDarwinWin32 () {
