@@ -1,16 +1,17 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, dialog } from 'electron';
 import updater from './updater';
+import isDev from 'electron-is-dev';
+var log = require('log-to-file');
 
-// Handle creating/removing shortcuts on Windows when installing/uninstalling.
-if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
-  app.quit();
-}
+log(process.argv, 'electron-example.log')
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 
 const createWindow = () => {
+  log('Creating window', 'electron-example.log')
+
   // Create the browser window.
   mainWindow = new BrowserWindow({
     width: 800,
@@ -20,16 +21,36 @@ const createWindow = () => {
   // and load the index.html of the app.
   mainWindow.loadURL(`file://${__dirname}/index.html`);
 
-  // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  if (isDev) {
+    // Open the DevTools.
+    mainWindow.webContents.openDevTools()
+  } else {
+    // Handle squirrel event. Avoid calling for updates when install
+    if(require('electron-squirrel-startup')) {
+      log('Squirrel events handle', 'electron-example.log')
+      app.quit()
+      // Hack because app.quit() is not immediate
+      process.exit(0)
+    }
 
-  // Check for updates
-  mainWindow.webContents.once('did-frame-finish-load', function (event) {
-    updater.init()
-  })
+    if (process.platform === 'win32') {
+      var cmd = process.argv[1]
+      if (cmd === '--squirrel-firstrun') {
+        log('Squirrel first run', 'electron-example.log')
+        return
+      }
+    }
+
+    // Check for updates
+    mainWindow.webContents.once("did-frame-finish-load", function (event) {
+      log('Ready to look for update', 'electron-example.log')
+      updater.init()
+    })
+  }
 
   // Emitted when the window is closed.
   mainWindow.on('closed', () => {
+    log('Closing app', 'electron-example.log')
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
