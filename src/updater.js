@@ -1,5 +1,6 @@
-const electron = require('electron')
+import electron, {dialog} from 'electron'
 const APP_VERSION = require('../package.json').version
+var log = require('log-to-file');
 
 const AUTO_UPDATE_URL = 'https://api.dev.update.rocks/update/github.com/rllola/electron-example/' + process.platform + '/' + APP_VERSION
 
@@ -10,31 +11,31 @@ function init () {
     console.log(AUTO_UPDATE_URL)
     initDarwinWin32()
   }
-  initDarwinWin32()
 }
 
 function initDarwinWin32 () {
   electron.autoUpdater.on(
     'error',
-    (err) => console.error(`Update error: ${err.message}`))
+    (err) => log(`Update error: ${err.message}`, 'electron-example.log'))
 
   electron.autoUpdater.on(
     'checking-for-update',
-    () => console.log('Checking for update'))
+    () => log('Checking for update', 'electron-example.log'))
 
   electron.autoUpdater.on(
     'update-available',
-    () => console.log('Update available'))
+    () => log('Update available', 'electron-example.log'))
 
   electron.autoUpdater.on(
     'update-not-available',
-    () => console.log('No update available'))
+    () => log('No update available', 'electron-example.log'))
 
   // Ask the user if update is available
   electron.autoUpdater.on(
     'update-downloaded',
     (event, releaseNotes, releaseName) => {
-      dialog.showMessageBox(window, {
+      log('Update downloaded', 'electron-example.log')
+      dialog.showMessageBox({
         type: 'question',
         buttons: ['Update', 'Cancel'],
         defaultId: 0,
