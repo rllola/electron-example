@@ -1,8 +1,8 @@
 import electron, {dialog} from 'electron'
 const APP_VERSION = require('../package.json').version
-var log = require('log-to-file');
+import log from 'log-to-file'
 
-const AUTO_UPDATE_URL = 'https://api.dev.update.rocks/update/github.com/rllola/electron-example/' + process.platform + '/' + APP_VERSION
+const AUTO_UPDATE_URL = 'https://api.update.rocks/update/github.com/rllola/electron-example/' + process.platform + '/' + APP_VERSION
 
 function init () {
   if (process.platform === 'linux') {
