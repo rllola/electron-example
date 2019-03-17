@@ -10,11 +10,7 @@
                 "electron": "3.0"
               }
             }
-          ],
-          "react"
-        ],
-        "plugins": [
-          "transform-async-to-generator"
+          ]
         ],
         "sourceMaps": "inline"
       }
@@ -29,11 +25,7 @@
                 "electron": "3.0"
               }
             }
-          ],
-          "react"
-        ],
-        "plugins": [
-          "transform-async-to-generator"
+          ]
         ],
         "sourceMaps": "none"
       }

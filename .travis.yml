@@ -22,6 +22,10 @@ install:
   - npm install
 script:
   - npm test
+
+before_deploy:
+  - if [ "$TRAVIS_OS_NAME" = osx ]; then ./add-osx-certs.sh; fi
+
 deploy:
   provider: script
   skip_cleanup: true
