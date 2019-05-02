@@ -26,7 +26,7 @@ before_install:
   - security unlock-keychain -p travis $KEY_CHAIN
   - security import $CERTIFICATE_P12 -k $KEY_CHAIN -P $CERTIFICATE_PASSWORD -T /usr/bin/codesign;
   - security find-identity -v
-  - rm -fr *.p12
+
 
 install:
   - npm install -g electron-forge
@@ -35,9 +35,13 @@ script:
   - npm test
   - npm run make
 
+after_script:
+  - rm -fr *.p12
+
 before_deploy:
   - if [ "$TRAVIS_OS_NAME" = osx ]; then chmod +x add-osx-cert.sh; fi
   #- if [ "$TRAVIS_OS_NAME" = osx ]; then ./add-osx-cert.sh; fi
+
 
 deploy:
   provider: script
