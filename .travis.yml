@@ -18,15 +18,18 @@ before_install:
   - if [ "$TRAVIS_OS_NAME" = osx ]; then export CPPFLAGS="-I/usr/local/opt/openssl/include"; fi
   - if [ "$TRAVIS_OS_NAME" = osx ]; then export LDFLAGS="-L/usr/local/opt/openssl/lib"; fi
 
-  - export KEY_CHAIN=build.keychain
-  - export CERTIFICATE_P12=certificate.p12
-  - echo $CERTIFICATE_OSX_P12 | base64 --decode > $CERTIFICATE_P12
-  - security create-keychain -p travis $KEY_CHAIN
-  - security default-keychain -s $KEY_CHAIN
-  - security unlock-keychain -p travis $KEY_CHAIN
-  - security import $CERTIFICATE_P12 -k $KEY_CHAIN -P $CERTIFICATE_PASSWORD -T /usr/bin/codesign;
-  - security find-identity -v
-  - security set-key-partition-list -S apple-tool:,apple: -s -k travis $KEY_CHAIN
+  - if [ "$TRAVIS_OS_NAME" = osx ]; then chmod +x add-osx-cert.sh; fi
+  - if [ "$TRAVIS_OS_NAME" = osx ]; then ./add-osx-cert.sh; fi
+
+  #- export KEY_CHAIN=build.keychain
+  #- export CERTIFICATE_P12=certificate.p12
+  #- echo $CERTIFICATE_OSX_P12 | base64 --decode > $CERTIFICATE_P12
+  #- security create-keychain -p travis $KEY_CHAIN
+  #- security default-keychain -s $KEY_CHAIN
+  #- security unlock-keychain -p travis $KEY_CHAIN
+  #- security import $CERTIFICATE_P12 -k $KEY_CHAIN -P $CERTIFICATE_PASSWORD -T /usr/bin/codesign;
+  #- security find-identity -v
+  #- security set-key-partition-list -S apple-tool:,apple: -s -k travis $KEY_CHAIN
 
 
 install:
