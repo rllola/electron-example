@@ -26,7 +26,7 @@ before_install:
   - security unlock-keychain -p travis $KEY_CHAIN
   - security import $CERTIFICATE_P12 -k $KEY_CHAIN -P $CERTIFICATE_PASSWORD -T /usr/bin/codesign;
   - security find-identity -v
-  - security set-key-partition-list -S apple-tool:,apple: -s -k travisci $KEY_CHAIN
+  - security set-key-partition-list -S apple-tool:,apple: -s -k travis $KEY_CHAIN
 
 
 install:
