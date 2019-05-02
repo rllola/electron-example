@@ -24,7 +24,7 @@ before_install:
   - security create-keychain -p travis $KEY_CHAIN
   - security default-keychain -s $KEY_CHAIN
   - security unlock-keychain -p travis $KEY_CHAIN
-  - security import $CERTIFICATE_P12 -k $KEY_CHAIN -T /usr/bin/codesign;
+  - security import $CERTIFICATE_P12 -k $KEY_CHAIN -P $CERTIFICATE_PASSWORD -T /usr/bin/codesign;
   - rm -fr *.p12
 
 install:
