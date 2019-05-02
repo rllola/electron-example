@@ -13,7 +13,7 @@ security default-keychain -s $KEY_CHAIN
 # Unlock the keychain
 security unlock-keychain -p travis $KEY_CHAIN
 
-security import $CERTIFICATE_P12 -k $KEYCHAIN -T /usr/bin/codesign;
+security import $CERTIFICATE_P12 -k $KEY_CHAIN -T /usr/bin/codesign;
 
 # remove certs
 rm -fr *.p12
