@@ -23,10 +23,6 @@ install:
   - npm install
 script:
   - npm test
-  - npm run make
-
-after_script:
-  - rm -fr *.p12
 
 before_deploy:
   - if [ "$TRAVIS_OS_NAME" = osx ]; then chmod +x add-osx-cert.sh; fi
