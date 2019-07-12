@@ -15,38 +15,7 @@
   "author": "lola",
   "license": "MIT",
   "config": {
-    "forge": {
-      "make_targets": {
-        "win32": [
-          "squirrel"
-        ],
-        "darwin": [
-          "dmg",
-          "zip"
-        ],
-        "linux": [
-          "deb"
-        ]
-      },
-      "electronPackagerConfig": {
-        "asar": true,
-        "osxSign": true
-      },
-      "electronWinstallerConfig": {
-        "name": "electron_example"
-      },
-      "electronInstallerDMG": {},
-      "electronInstallerDebian": {},
-      "electronInstallerRedhat": {},
-      "github_repository": {
-        "owner": "rllola",
-        "name": "electron-example"
-      },
-      "windowsStoreConfig": {
-        "packageName": "",
-        "name": "electronexample"
-      }
-    }
+    "forge": "./forge.config.js"
   },
   "dependencies": {
     "electron-compile": "^6.4.4",
