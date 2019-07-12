@@ -15,10 +15,9 @@ install:
   - npm install
 
 deploy_script:
-  - dir "c:\Program Files (x86)\Windows Kits\10\bin\x64\"
   - echo %CERTIFICATE_WINDOWS_PFX% | base64.exe -di > example-electron.pfx
   - npm run make
-  - signtool.exe verify /pa ".\out\make\squirrel.windows\x64\electron-example-0.0.21 Setup.exe"
+  - 'c:\Program Files (x86)\Windows Kits\10\bin\x64\signtool.exe' verify /pa ".\out\make\squirrel.windows\x64\electron-example-0.0.21 Setup.exe"
   - IF DEFINED APPVEYOR_REPO_TAG_NAME (npm run publish)
 
 test: off
