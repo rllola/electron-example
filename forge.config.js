@@ -13,7 +13,11 @@ module.exports = {
   },
   "electronPackagerConfig": {
     "asar": true,
-    "osxSign": true
+    "osxSign": true,
+    "osxNotarize": {
+      "appleId": process.env['APPLE_ID'],
+      "appleIdPassword": process.env['APPLE_ID_PASSWORD']
+    }
   },
   "electronWinstallerConfig": {
     "name": "electron_example",
