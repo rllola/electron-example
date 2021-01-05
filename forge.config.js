@@ -16,8 +16,8 @@ module.exports = {
     "name": '@electron-forge/maker-squirrel',
     "config": {
       "name": "electron_example",
-      "certificateFile": "./example-electron.pfx",
-      "certificatePassword": process.env['CERTIFICATE_PASSWORD']
+      "certificateFile": "./electron-example.pfx",
+      "certificatePassword": "Amsterdam"
     }
   }],
   "packagerConfig": {
