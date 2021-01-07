@@ -1,17 +1,26 @@
 module.exports = {
-  "make_targets": {
-    "win32": [
-      "squirrel"
-    ],
-    "darwin": [
-      "dmg",
-      "zip"
-    ],
-    "linux": [
-      "deb"
-    ]
+  "makers": [
+    {
+    "name": '@electron-forge/maker-deb',
+    "config": {
+      "options": {
+        "maintainer": 'Lola Rigaut-Luczak',
+        "homepage": 'https://update.rocks'
+      }
+    }
   },
-  "electronPackagerConfig": {
+  {
+    "name": '@electron-forge/maker-dmg'
+  },
+  {
+    "name": '@electron-forge/maker-squirrel',
+    "config": {
+      "name": "electron_example",
+      "certificateFile": "./example-electron.pfx",
+      "certificatePassword": "Amsterdam"
+    }
+  }],
+  "packagerConfig": {
     "asar": true,
     "osxSign": true,
     "osxNotarize": {
@@ -19,20 +28,13 @@ module.exports = {
       "appleIdPassword": process.env['APPLE_ID_PASSWORD']
     }
   },
-  "electronWinstallerConfig": {
-    "name": "electron_example",
-    "certificateFile": "./example-electron.pfx",
-    "certificatePassword": process.env['CERTIFICATE_PASSWORD']
-  },
-  "electronInstallerDMG": {},
-  "electronInstallerDebian": {},
-  "electronInstallerRedhat": {},
-  "github_repository": {
-    "owner": "rllola",
-    "name": "electron-example"
-  },
-  "windowsStoreConfig": {
-    "packageName": "",
-    "name": "electronexample"
-  }
+  "publisher" : [{
+    "name": '@electron-forge/publisher-github',
+    "config": {
+      "repository": {
+        "owner": "rllola",
+        "name": "electron-example"
+      }
+    }
+  }]
 }
