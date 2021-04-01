@@ -1,6 +1,6 @@
-import electron, {dialog} from 'electron'
+const {electron, dialog} = require('electron')
 const APP_VERSION = require('../package.json').version
-import log from 'log-to-file'
+const log = require('log-to-file')
 
 const AUTO_UPDATE_URL = 'https://api.update.rocks/update/github.com/rllola/electron-example/stable/' + process.platform + '/' + APP_VERSION
 

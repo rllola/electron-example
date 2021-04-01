@@ -1,7 +1,8 @@
-import { app, BrowserWindow, dialog } from 'electron'
-import updater from './updater'
-import isDev from 'electron-is-dev'
-import log from 'log-to-file'
+const { app, BrowserWindow, dialog } = require('electron')
+const updater = require('./updater')
+const isDev = require('electron-is-dev')
+const log = require('log-to-file')
+const version = require('../package.json').version
 
 log(process.argv, 'electron-example.log')
 
@@ -18,8 +19,9 @@ const createWindow = () => {
     height: 600,
   })
 
+
   // and load the index.html of the app.
-  mainWindow.loadURL(`file://${__dirname}/index.html`)
+  mainWindow.loadURL(`file://${__dirname}/index.html?version=${version}`)
 
   if (isDev) {
     // Open the DevTools.
