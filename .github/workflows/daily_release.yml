@@ -1,0 +1,14 @@
+name: Daily-Release
+
+on: push
+
+jobs:
+  daily-release:
+    name: Create release 
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Bump version
+        run: node script/bump_version.js
