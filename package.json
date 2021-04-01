@@ -1,7 +1,7 @@
 {
   "name": "electron-example",
   "productName": "electron-example",
-  "version": "0.0.24",
+  "version": "0.0.25",
   "description": "My Electron application description",
   "main": "src/index.js",
   "scripts": {
@@ -27,6 +27,7 @@
     "@electron-forge/maker-deb": "^6.0.0-beta.54",
     "@electron-forge/maker-dmg": "^6.0.0-beta.54",
     "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
+    "@electron-forge/maker-zip": "^6.0.0-beta.54",
     "@electron-forge/publisher-github": "^6.0.0-beta.54",
     "babel-preset-env": "^1.7.0",
     "electron": "^11.1.0",

@@ -2,3 +2,8 @@ node_modules
 out
 electron-example.log
 *.pfx
+*.nupkg
+*.deb
+*.dmg
+*.zip
+RELEASES
