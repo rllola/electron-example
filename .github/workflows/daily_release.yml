@@ -11,4 +11,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Bump version
-        run: node script/bump_version.js
+        run: |
+          node script/bump_version.js
+          git config --local user.email "contact@update.rocks"
+          git config --local user.name "bot"
+          git add .
+          git commit -m "Bump version"
+          git push origin misc/v0.0.25
