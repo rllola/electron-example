@@ -17,9 +17,10 @@ jobs:
           git config --local user.name "bot"
           git add .
           git commit -m "Bump version"
-          #git push origin master
+          git push origin master
       - name: Create tag
         run: |
           export VERSION=v$(node -e "console.log(require('./package.json').version);")
           git tag $VERSION
+          git push origin $VERSION
 
