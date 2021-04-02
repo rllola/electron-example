@@ -40,7 +40,8 @@ module.exports = {
       "repository": {
         "owner": "rllola",
         "name": "electron-example"
-      }
+      },
+      "prerelease": true
     }
   }]
 }
