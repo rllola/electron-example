@@ -34,7 +34,7 @@ module.exports = {
       "appleIdPassword": process.env['APPLE_ID_PASSWORD']
     }
   },
-  "publisher" : [{
+  "publishers" : [{
     "name": '@electron-forge/publisher-github',
     "config": {
       "repository": {
