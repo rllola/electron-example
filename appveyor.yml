@@ -4,10 +4,6 @@ image:
 platform:
   - x64
 
-environment:
-  GITHUB_TOKEN:
-    secure: E4qaT3siPp/6JLtpXmRRfnQytPM1RZ+9ifyhBnxCHBetp2UYYUHZwKcu+PvQGZkz
-
 init:
   - git config --global core.autocrlf input
 
