@@ -14,6 +14,7 @@ addons:
   homebrew:
     packages:
     - openssl
+    - atool
 
 before_install:
   # 2016-10: Apple doesn't include openssl any more because of security
