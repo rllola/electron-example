@@ -3,9 +3,12 @@ sudo: required
 language: node_js
 node_js:
   - "14"
-os:
-  - osx
-  - linux
+
+matrix:
+  include:
+    - os: osx
+      osx_image: "xcode11.3"
+    - os: linux
 addons:
   apt:
     packages:
@@ -14,7 +17,6 @@ addons:
   homebrew:
     packages:
     - openssl
-    - atool
 
 before_install:
   # 2016-10: Apple doesn't include openssl any more because of security
