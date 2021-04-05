@@ -27,6 +27,7 @@ before_install:
 
 install:
   - npm i -g @electron-forge/cli
+  - npm install macos-alias
   - npm install
 script:
   - npm test
