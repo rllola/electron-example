@@ -27,7 +27,7 @@ before_install:
 
 install:
   - npm i -g @electron-forge/cli
-  - npm install macos-alias
+  - if [ "$TRAVIS_OS_NAME" = osx ]; then npm install macos-alias; fi
   - npm install
 script:
   - npm test
