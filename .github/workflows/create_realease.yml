@@ -3,7 +3,7 @@ name: Create-Release
 on:
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron:  '0 18 * * *'
+    - cron:  '0 11 * * *'
 
 jobs:
   create-release:
@@ -16,16 +16,10 @@ jobs:
       - name: Get version
         run: |
           echo 'VERSION='v$(node -e "console.log(require('./package.json').version);") >> $GITHUB_ENV
-      - name: Create release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+      - name: Publish release
+        uses: test-room-7/action-publish-release-drafts@v0
         with:
-          tag_name: ${{ env.VERSION }}
-          release_name: Automatic release
-          body: |
-            Nothing to see here
-          draft: false
-          prerelease: false
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          tag-name: ${{ env.VERSION }}
 
 
