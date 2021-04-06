@@ -3,7 +3,7 @@ name: Create-Release
 on:
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron:  '0 17 * * *'
+    - cron:  '0 18 * * *'
 
 jobs:
   create-release:
@@ -22,7 +22,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
           tag_name: ${{ env.VERSION }}
-          release_name: Release for test
+          release_name: Automatic release
           body: |
             Nothing to see here
           draft: false
