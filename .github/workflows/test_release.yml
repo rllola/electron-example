@@ -1,0 +1,19 @@
+name: Test-Release
+
+on:
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron:  '0 12 * * *'
+
+jobs:
+  create-release:
+    name: Test release 
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Run test
+        run: |
+          npm install
+          npm test
