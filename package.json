@@ -1,7 +1,7 @@
 {
   "name": "electron-example",
   "productName": "electron-example",
-  "version": "0.0.168",
+  "version": "0.0.169",
   "description": "My Electron application description",
   "main": "src/index.js",
   "scripts": {
