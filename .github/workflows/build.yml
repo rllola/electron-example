@@ -1,8 +1,6 @@
 name: Build
 
 on:
-  branches:
-    - misc/gh-action
   pull_request:
     branches: [ main ]
 
