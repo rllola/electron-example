@@ -26,8 +26,11 @@ jobs:
       - name: Windows self-signed certificate
         if: runner.os == 'Windows'
         run: |
-          echo ${{ secrets.CERTIFICATE_WINDOWS_PFX }} > encoded.txt
+          echo "$CERTIFICATE_WINDOWS_PFX" >> encoded.txt
           certutil.exe -decode .\encoded.txt electron-example.pfx
+        shell: bash
+        env:
+          CERTIFICATE_WINDOWS_PFX : ${{secrets.CERTIFICATE_WINDOWS_PFX}}
       - name: Build application
         run: |
           npm run make
