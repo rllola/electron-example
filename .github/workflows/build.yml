@@ -26,7 +26,7 @@ jobs:
       - name: Windows self-signed certificate
         if: runner.os == 'Windows'
         run: |
-          echo "$CERTIFICATE_WINDOWS_PFX" >> encoded.txt
+          echo $CERTIFICATE_WINDOWS_PFX >> encoded.txt
           certutil.exe -decode .\encoded.txt electron-example.pfx
         shell: bash
         env:
