@@ -27,7 +27,7 @@ jobs:
         if: runner.os == 'Windows'
         run: |
           echo "$CERTIFICATE_WINDOWS_PFX" >> encoded.txt
-          certutil.exe -decode encoded.txt electron-example.pfx
+          certutil.exe -decode encoded.txt example-electron.pfx
         shell: bash
         env:
           CERTIFICATE_WINDOWS_PFX : ${{secrets.CERTIFICATE_WINDOWS_PFX}}
