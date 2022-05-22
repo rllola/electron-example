@@ -43,7 +43,6 @@ jobs:
           CERTIFICATE_PASSWORD : ${{secrets.CERTIFICATE_PASSWORD}}
       - name: Build application
         run: |
-          echo $APPLE_TEAM_ID
           npm run make
           ls
         env:
