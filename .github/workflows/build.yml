@@ -38,6 +38,9 @@ jobs:
           npm install macos-alias
           chmod +x add-osx-cert.sh
           bash -x add-osx-cert.sh
+        env:
+          CERTIFICATE_OSX_P12 : ${{secrets.CERTIFICATE_OSX_P12}}
+          CERTIFICATE_PASSWORD : ${{secrets.CERTIFICATE_PASSWORD}}
       - name: Build application
         run: |
           npm run make
