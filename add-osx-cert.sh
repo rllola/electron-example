@@ -9,6 +9,8 @@ echo $CERTIFICATE_OSX_P12 | base64 --decode > $CERTIFICATE_P12
 #create a keychain
 security create-keychain -p github $KEY_CHAIN
 
+echo "Key chain created"
+
 # Make the keychain the default so identities are found
 security default-keychain -s $KEY_CHAIN
 

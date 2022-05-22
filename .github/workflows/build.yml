@@ -37,7 +37,7 @@ jobs:
           sudo xcode-select -r
           npm install macos-alias
           chmod +x add-osx-cert.sh
-          ./add-osx-cert.sh
+          bash -x add-osx-cert.sh
       - name: Build application
         run: |
           npm run make
