@@ -1,6 +1,8 @@
 KEY_CHAIN=build.keychain
 CERTIFICATE_P12=certificate.p12
 
+echo "Adding identity to chain"
+
 # Recreate the certificate from the secure environment variable
 echo $CERTIFICATE_OSX_P12 | base64 --decode > $CERTIFICATE_P12
 

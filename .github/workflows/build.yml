@@ -38,9 +38,6 @@ jobs:
           npm install macos-alias
           chmod +x add-osx-cert.sh
           ./add-osx-cert.sh
-        shell: bash
-        env:
-          CERTIFICATE_WINDOWS_PFX : ${{secrets.CERTIFICATE_WINDOWS_PFX}}
       - name: Build application
         run: |
           npm run make
