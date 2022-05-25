@@ -7,3 +7,5 @@ electron-example.log
 *.dmg
 *.zip
 RELEASES
+*.cer
+macos/

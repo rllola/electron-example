@@ -1,0 +1,52 @@
+name: Build
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build:
+    name: Build application 
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+          - os: macos-latest
+          - os: windows-latest
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: |
+          npm install
+          npm i -g @electron-forge/cli
+      - name: Windows self-signed certificate
+        if: runner.os == 'Windows'
+        run: |
+          echo "$CERTIFICATE_WINDOWS_PFX" >> encoded.txt
+          certutil.exe -decode encoded.txt example-electron.pfx
+        shell: bash
+        env:
+          CERTIFICATE_WINDOWS_PFX : ${{secrets.CERTIFICATE_WINDOWS_PFX}}
+      - name: macOS certificate
+        if: runner.os == 'macOS'
+        run: |
+          sudo xcode-select -r
+          npm install macos-alias
+          chmod +x add-osx-cert.sh
+          bash -x add-osx-cert.sh
+        env:
+          CERTIFICATE_OSX_P12 : ${{secrets.CERTIFICATE_OSX_P12}}
+          CERTIFICATE_PASSWORD : ${{secrets.CERTIFICATE_PASSWORD}}
+      - name: Build application
+        run: |
+          npm run make
+          ls
+        env:
+          APPLE_ID : ${{secrets.APPLE_ID}}
+          APPLE_ID_PASSWORD : ${{secrets.APPLE_ID_PASSWORD}}
+          APPLE_TEAM_ID : ${{secrets.APPLE_TEAM_ID}}
