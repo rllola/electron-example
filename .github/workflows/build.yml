@@ -44,9 +44,10 @@ jobs:
           CERTIFICATE_PASSWORD : ${{secrets.CERTIFICATE_PASSWORD}}
       - name: Build application
         run: |
-          npm run make
+          npm run publish
           ls
         env:
           APPLE_ID : ${{secrets.APPLE_ID}}
           APPLE_ID_PASSWORD : ${{secrets.APPLE_ID_PASSWORD}}
           APPLE_TEAM_ID : ${{secrets.APPLE_TEAM_ID}}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
