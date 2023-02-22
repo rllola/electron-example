@@ -1,6 +1,6 @@
 const test = require('ava');
 const axios = require('axios').default;
-const APP_VERSION = require('./package.json').version
+const APP_VERSION = require('../package.json').version
 const FAKE_APP_VERSION = "0.0.1"
 const AUTO_UPDATE_URL = 'https://api.update.rocks/update/github.com/rllola/electron-example/stable/'
 const AUTO_UPDATE_DEV_URL = 'https://api.dev.update.rocks/update/github.com/rllola/electron-example/stable/'
