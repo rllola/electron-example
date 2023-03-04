@@ -5,7 +5,7 @@ const log = require('log-to-file')
 const https = require('https')
 const fs = require('fs');
 
-const AUTO_UPDATE_URL = 'https://dev.api.update.rocks/update/github.com/rllola/electron-example/stable/' + process.platform + '/' + APP_VERSION
+const AUTO_UPDATE_URL = 'https://api.dev.update.rocks/update/github.com/rllola/electron-example/stable/' + process.platform + '/' + APP_VERSION
 
 function init () {
   if (process.platform === 'linux') {
