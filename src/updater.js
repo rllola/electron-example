@@ -61,7 +61,7 @@ function initDarwinWin32 () {
 async function initLinux() {
   const response = await axios.get(AUTO_UPDATE_URL)
   log(JSON.stringify(response.data), 'electron-example.log')
-  if (response.data.version == APP_VERSION) {
+  if (response.data.version && response.data.version == APP_VERSION) {
     log('Application up to date', 'electron-example.log')
     return
   }
