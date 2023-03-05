@@ -4,7 +4,7 @@ const path = require('path')
 module.exports = {
   hooks: {
     packageAfterPrune: async (forgeConfig, buildPath, electronVersion, platform, arch) => {
-      if (platform = 'darwin') {
+      if (platform === 'darwin') {
         console.log("We need to remove the problematic link file on macOS")
         console.log(`Build path ${buildPath}`)
         // maybe we can remove this ?
