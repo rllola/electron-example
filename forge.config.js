@@ -2,9 +2,10 @@ const fs = require('fs')
 
 module.exports = {
   hooks: {
-    packageAfterPrune: async (buildPath, electronVersion, platform, arch) => {
+    packageAfterPrune: async (forgeConfig, buildPath, electronVersion, platform, arch) => {
+
       console.log(`platform : ${platform}`)
-      console.log(`Build path ${JSON.stringify(buildPath)}`)
+      console.log(`Build path ${buildPath}`)
       if (platform = 'darwin') {
         console.log("We are on macOS !")
         //fs.unlinkSync(path)
