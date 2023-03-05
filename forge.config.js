@@ -4,7 +4,7 @@ module.exports = {
   hooks: {
     packageAfterPrune: async (buildPath, electronVersion, platform, arch) => {
       console.log(`platform : ${platform}`)
-      console.log(`Build path ${buildPath}`)
+      console.log(`Build path ${JSON.stringify(buildPath)}`)
       if (platform = 'darwin') {
         console.log("We are on macOS !")
         //fs.unlinkSync(path)
