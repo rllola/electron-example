@@ -10,7 +10,7 @@ module.exports = {
         //fs.unlinkSync(path)
       }
     }
-  }
+  },
   makers: [
     {
       name: '@electron-forge/maker-deb',
