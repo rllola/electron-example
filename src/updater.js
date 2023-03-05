@@ -3,7 +3,9 @@ const axios = require('axios').default
 const APP_VERSION = require('../package.json').version
 const log = require('log-to-file')
 const https = require('https')
-const fs = require('fs');
+const fs = require('fs')
+const os = require('os')
+const path = require('path')
 
 const AUTO_UPDATE_URL = 'https://api.dev.update.rocks/update/github.com/rllola/electron-example/stable/' + process.platform + '/' + APP_VERSION
 
@@ -58,6 +60,7 @@ function initDarwinWin32 () {
 
 async function initLinux() {
   const response = await axios.get(AUTO_UPDATE_URL)
+  log(JSON.stringify(response.data), 'electron-example.log')
   if (response.data.version == APP_VERSION) {
     log('Application up to date', 'electron-example.log')
     return
@@ -75,17 +78,16 @@ async function initLinux() {
 
   if (result.response === 0) {
     console.log('Download update')
-    const file = fs.createWriteStream("~/Application/electron-example_amd64.deb")
-    console.log(response.data.url)
-    https.get(response.data.url, function(response) {
-       response.pipe(file)
-           file.on("finish", () => {
-           file.close()
-           dialog.showMessageBoxSync({
-            message: `The updated has been downloaded and s ready to be installed`,
-            title: 'Update downloaded'
-          })
-       })
+    const file = fs.createWriteStream(path.join(os.homedir(), "Application", "UpdateRocks", "electron-example_amd64.deb"))
+    https.get(response.data.url, function (response) {
+      console.log("writting to file")
+      response.pipe(file)
+      file.on("finish", () => {
+        dialog.showMessageBoxSync({
+          message: `The updated has been downloaded and is ready to be installed`,
+          title: 'Update downloaded'
+        })
+      })
     })
   }
 
