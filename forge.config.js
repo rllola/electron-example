@@ -7,7 +7,6 @@ module.exports = {
       if (platform === 'darwin') {
         console.log("We need to remove the problematic link file on macOS")
         console.log(`Build path ${buildPath}`)
-        // maybe we can remove this ?
         fs.unlinkSync(path.join(buildPath, 'node_modules/macos-alias/build/node_gyp_bins/python3'))
       }
     }

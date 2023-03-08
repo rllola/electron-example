@@ -7,7 +7,7 @@ const fs = require('fs')
 const os = require('os')
 const path = require('path')
 
-const AUTO_UPDATE_URL = 'https://api.dev.update.rocks/update/github.com/rllola/electron-example/stable/' + process.platform + '/' + APP_VERSION
+const AUTO_UPDATE_URL = 'https://api.update.rocks/update/github.com/rllola/electron-example/stable/' + process.platform + '/' + APP_VERSION
 
 function init () {
   if (process.platform === 'linux') {
