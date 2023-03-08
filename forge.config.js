@@ -36,7 +36,7 @@ module.exports = {
     config: {
       name: 'electron_example',
       certificateFile: './example-electron.pfx',
-      'certificatePassword': 'Amsterdam'
+      certificatePassword: process.env['CERTIFICATE_PASSWORD']
     }
   }],
   packagerConfig: {
