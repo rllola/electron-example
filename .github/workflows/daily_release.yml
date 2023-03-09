@@ -1,4 +1,4 @@
-name: Weekly-Release
+name: Daily-Release
 
 on:
   schedule:
@@ -20,7 +20,7 @@ jobs:
           git config --local user.name "bot"
           git add .
           git commit -m "Bump version"
-          git push origin master
+          git push origin main
       - name: Create tag
         run: |
           export VERSION=v$(node -e "console.log(require('./package.json').version);")
