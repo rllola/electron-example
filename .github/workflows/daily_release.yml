@@ -17,9 +17,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.MY_TOKEN }}
       - name: Bump version
-        env:
-          GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
         run: |
           node script/bump_version.js
           git config --local user.email "lola@update.rocks"
@@ -29,8 +29,6 @@ jobs:
           git push origin main
 
       - name: Create tag
-        env:
-          GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
         run: |
           export VERSION=v$(node -e "console.log(require('./package.json').version);")
           git tag $VERSION
