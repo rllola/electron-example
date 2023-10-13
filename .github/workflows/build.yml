@@ -45,7 +45,6 @@ jobs:
       - name: Build application
         run: |
           npm run publish
-          ls
         env:
           APPLE_ID : ${{secrets.APPLE_ID}}
           APPLE_ID_PASSWORD : ${{secrets.APPLE_ID_PASSWORD}}
