@@ -22,8 +22,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
         run: |
           node script/bump_version.js
-          git config --local user.email "lola@update.rocks"
-          git config --local user.name "Lola action"
           git add .
           git commit -m "Bump version"
           git push origin main
