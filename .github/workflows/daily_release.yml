@@ -20,14 +20,18 @@ jobs:
       - name: Bump version
         run: |
           node script/bump_version.js
-          git config --local user.email "contact@update.rocks"
-          git config --local user.name "bot"
+          git config --local user.email "lola@update.rocks"
+          git config --local user.name "Lola action"
           git add .
           git commit -m "Bump version"
           git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
       - name: Create tag
         run: |
           export VERSION=v$(node -e "console.log(require('./package.json').version);")
           git tag $VERSION
           git push origin $VERSION
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
 
