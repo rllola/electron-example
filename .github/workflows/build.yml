@@ -26,7 +26,7 @@ jobs:
           npm i -g @electron-forge/cli
       - name: Set version
         run: |
-          npm version from-git
+          npm version --no-git-tag-version from-git
       - name: Windows self-signed certificate
         if: runner.os == 'Windows'
         run: |
