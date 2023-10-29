@@ -1,9 +1,9 @@
 name: Daily-Release
 
 on:
-#   schedule:
-#     # * is a special character in YAML so you have to quote this string
-#     - cron:  '0 10 * * *'
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron:  '0 10 * * *'
 
 jobs:
   daily-release:
@@ -15,11 +15,11 @@ jobs:
         uses: actions/checkout@v2
         with:
           token: ${{ secrets.MY_TOKEN }}
-
-      # - name: Create tag
-      #   run: |
-      #     export VERSION=v$(node -e "console.log(require('./package.json').version);")
-      #     git tag $VERSION
-      #     git push origin $VERSION
+      - name: Create tag
+        run: |
+          export VERSION=$(git describe --tags `git rev-list --tags --max-count=1`)
+          export VERSION=$(echo "$VERSION" | awk 'BEGIN{FS=OFS="."} {$3+=1} 1')
+          git tag $VERSION
+          git push origin $VERSION
 
 
