@@ -1,4 +1,4 @@
-name: Build
+name: "Build releases"
 
 on:
   push:
@@ -24,6 +24,9 @@ jobs:
         run: |
           npm install
           npm i -g @electron-forge/cli
+      - name: Set version
+        run: |
+          npm version from-git
       - name: Windows self-signed certificate
         if: runner.os == 'Windows'
         run: |
